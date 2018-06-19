@@ -12,6 +12,8 @@ package Exercicio01;
 public interface InterfaceExercicio01 {
      void geralTela(); 
    
+   void configurarComBoBox(); 
+           
    void adicionarComponentes();
    
    void instaciarComponentes();

@@ -6,6 +6,8 @@
 package Exercicio01;
 
 import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -20,12 +22,14 @@ private JLabel jLabelNome,jLabelIdade,jLabelRaca,
         jLabelApelido,jLabelPreco,jLabelDescricao;
 private JTextArea jTextAreaNome, jTextAreaIdade,jTextAreaRaca,
         jTextAreaApelido,jTextAreaPreco,jTextAreaDescricao;
-    public Exercicio01(){
+private JComboBox jComboBoxRaca;
+public Exercicio01(){
      geralTela();
      instaciarComponentes();
      adicionarComponentes();
      gerarLocalizacoes();
      gerarDimensoes();
+     configurarComBoBox();
      jFrame.setVisible(true);
     }
     @Override
@@ -51,8 +55,9 @@ private JTextArea jTextAreaNome, jTextAreaIdade,jTextAreaRaca,
        jFrame.add(jTextAreaIdade);
        jFrame.add(jTextAreaNome);
        jFrame.add(jTextAreaPreco);
-       jFrame.add(jTextAreaRaca);
+       jFrame.add(jComboBoxRaca);
        jFrame.add(jTextAreaDescricao);
+       
     }
 
     @Override
@@ -70,6 +75,7 @@ private JTextArea jTextAreaNome, jTextAreaIdade,jTextAreaRaca,
         jTextAreaRaca = new JTextArea();
         jTextAreaRaca = new JTextArea();
         jTextAreaDescricao = new JTextArea();
+        jComboBoxRaca = new JComboBox();
         
     }
 
@@ -85,11 +91,11 @@ private JTextArea jTextAreaNome, jTextAreaIdade,jTextAreaRaca,
         //Localização das TextArea
         jTextAreaNome.setLocation(10,30);
         jTextAreaIdade.setLocation(400,30);
-        jTextAreaRaca.setLocation(10,70);
         jTextAreaApelido.setLocation(200,70);
         jTextAreaPreco.setLocation(400,70);
         jTextAreaDescricao.setLocation(10,220);
-    
+        //localizacao do Combobox
+        jComboBoxRaca.setLocation(10,70);
     }
 
     @Override
@@ -97,17 +103,37 @@ private JTextArea jTextAreaNome, jTextAreaIdade,jTextAreaRaca,
         //dimensoes das labels
         jLabelNome.setSize(70,20);
         jLabelIdade.setSize(70,20);
-        jLabelRaca.setSize(70,20);
         jLabelApelido.setSize(70,20);
         jLabelPreco.setSize(70,20);
+        jLabelRaca.setSize(70,20);
         jLabelDescricao.setSize(70,20);
         //dimensões TextArea
         jTextAreaNome.setSize(340,20);
         jTextAreaIdade.setSize(190,20);
-        jTextAreaRaca.setSize(140,20);
         jTextAreaApelido.setSize(150,20);
         jTextAreaPreco.setSize(190,20);
         jTextAreaDescricao.setSize(580,88);
+        jComboBoxRaca.setSize(140,20);
+    }
+
+    @Override
+    public void configurarComBoBox() {
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(
+			new Object[]{
+				"Affenpinscher",  "Afghan Kuchi","Afghan Hound",
+                            "Africanis","Aidi","Airedale Terrier","Akbash",
+                            "Akita Inu","Akita Americano","Alapaha Blue Blood Bulldog",
+                            "Alaskan Klee Kai","Alaunt","American Bully (cão)",
+                            "American pit bull terrier","American Staffordshire Terrier",
+                            "Anglo-francês da pequena Vénerie","Appenzeller Sennenhund",
+                            "Ariége","Armant","Azawakh","Bakharwal","Bandog","Barbet",
+                            "Barbudo","Basenji","Basset Artesiano Normando",
+                            "Basset Azul da Gasconha","Basset de Artois"
+			}
+		);
+
+		jComboBoxRaca.setModel(modelo);
+		jComboBoxRaca.setSelectedIndex(-1);
     }
     
 }
